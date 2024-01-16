@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buku Tamu</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card-body">
+        <form action="#" method="post">
+          <div class="text-center">
+            <img src="https://seeklogo.com/images/U/universitas-diponegoro-logo-6B2C58478B-seeklogo.com.png" alt="" height="50" />
+            <h3>Buku Tamu Posko Desa Klego</h3>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Nama:</label>
+            <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukkan Nama" />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Asal:</label>
+            <input type="text" id="asal" name="asal" class="form-control" placeholder="Contoh: Desa Banyuurip " required />
+          </div>
+          <div class="form-group">
+            <label for="tanggal">Tanggal:</label>
+            <input type="date" id="tanggal" name="tanggal" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="review">Review:</label>
+            <textarea id="review" name="review" rows="2" class="form-control" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+    <footer class="footer">
+      <p>&copy; 2024 Nama Perusahaan. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>
