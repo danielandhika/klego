@@ -10,12 +10,18 @@
 
   <body>
     <div class="container">
+      <div class="text-center">
+        <img src="https://seeklogo.com/images/U/universitas-diponegoro-logo-6B2C58478B-seeklogo.com.png" alt="" height="50" />
+        <h3>Buku Tamu Posko Desa Klego</h3>
+      </div>
       <div class="card-body">
-        <form action="#" method="post">
-          <div class="text-center">
-            <img src="https://seeklogo.com/images/U/universitas-diponegoro-logo-6B2C58478B-seeklogo.com.png" alt="" height="50" />
-            <h3>Buku Tamu Posko Desa Klego</h3>
-          </div>
+        <div class="alert alert-success my-alert d-none alert-dismissible fade show" role="alert">
+          <strong>Terima Kasih Sudah Berkunjung!</strong> Semoga Sehat Selalu
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form name="submit-to-google-sheet">
           <div class="form-group">
             <label for="exampleInputEmail1">Nama:</label>
             <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukkan Nama" />
@@ -30,14 +36,41 @@
           </div>
           <div class="form-group">
             <label for="review">Review:</label>
-            <textarea id="review" name="review" rows="2" class="form-control" required></textarea>
+            <textarea type="text" id="review" name="review" rows="2" class="form-control" required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary btn-kirim">Submit</button>
+          <button class="btn btn-primary d-none btn-loading" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Loading...
+          </button>
         </form>
       </div>
     </div>
     <footer class="footer">
       <p>&copy; 2024 Nama Perusahaan. All Rights Reserved.</p>
     </footer>
+
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbwrmQ5X1ghgJa77gXY8Z82xUo0cCJ4ws4Dh873B4jiRW2bYYuWDNLTtdUcl3CFAccbjHg/exec';
+      const form = document.forms['submit-to-google-sheet'];
+      const btnKirim = document.querySelector('.btn-kirim');
+      const btnLoading = document.querySelector('.btn-loading');
+      const myAlert = document.querySelector('.my-alert');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        btnLoading.classList.toggle('d-none');
+        btnKirim.classList.toggle('d-none');
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+          .then((response) => {
+            btnLoading.classList.toggle('d-none');
+            btnKirim.classList.toggle('d-none');
+            myAlert.classList.toggle('d-none');
+            form.reset();
+            console.log('Success!', response);
+          })
+          .catch((error) => console.error('Error!', error.message));
+      });
+    </script>
   </body>
 </html>
